@@ -1,0 +1,23 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradiente principal -->
+  <defs>
+    <linearGradient id="bagGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00E5FF"></stop>
+      <stop offset="100%" stop-color="#7C4DFF"></stop>
+    </linearGradient>
+
+    <linearGradient id="boltGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00E5FF"></stop>
+      <stop offset="100%" stop-color="#1DE9B6"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Asa -->
+  <path d="M60 70C60 40 140 40 140 70" stroke="url(#bagGradient)" stroke-width="10" stroke-linecap="round" fill="none"></path>
+
+  <!-- Bolsa -->
+  <rect x="40" y="70" width="120" height="90" rx="20" stroke="url(#bagGradient)" stroke-width="10" fill="none"></rect>
+
+  <!-- Rayo -->
+  <path d="M105 90H90L100 115H85L110 150L100 120H115L105 90Z" fill="url(#boltGradient)"></path>
+</svg>
