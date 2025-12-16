@@ -5,20 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fake Shop</title>
     <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="">
 </head>
-<header>
-
-    
-    <img src="img/a4b9062ee52560fdfead782f1751b52b.jpg" alt="logo">
-
-    <nav class="navegacion-categorias">
-        <a href="/ropa " aria-label="ir a ropa"></a>
-    </nav>
-
-</header>
 
 <body>
+    <header>
+       <div class="header-contenedor">
+            <a href="index.html">
+            <div class="header-left">
+                <img src="img/a4b9062ee52560fdfead782f1751b52b.svg" alt="logo">
+                <h1>Fake Shop</h1>
+            </div>
+            </a>
+            <a href="HTML/carrito.html" class="header-right">
+                <img src="img/shopping-cart.svg" alt="logo">
+                <span class="carrito" id="carrito"></span>
+            </a>
+       </div>
+    </header>
+
+    <section class="container">
+        <div class="loading" id="loading">
+            <img src="img/loader.svg" alt="loading" class="loader">
+        </div>
+        <div class="products" id="products">
+
+        </div>
+    </section>
+   
     
+    <script src="JavaScript/utils.js"></script>
+    <script src="JavaScript/index.js"></script>
 </body>
 </html>
