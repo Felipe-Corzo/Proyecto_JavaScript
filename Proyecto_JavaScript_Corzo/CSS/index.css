@@ -162,7 +162,7 @@ header {
     font-size: 1.9rem;
     padding: 0 15px;
     margin: 10px 0;
-   ;
+   
 }
 
 /* Botón Añadir al carrito */
@@ -221,4 +221,182 @@ header {
 .details-button:hover {
     box-shadow: 0 0px 10px rgba(255, 250, 250, 0.534);
     cursor: pointer;
+}
+
+
+/* Estilos para el modal de detalles  POPPUP*/
+
+/* Overlay (Fondo translúcido) */
+.modal-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caja del Modal */
+.modal-content {
+
+    background-color: #0b141e;
+    width: 90%;
+    max-width: 980px;
+    
+    /* LIMITAR ALTURA Y ACTIVAR SCROLL */
+    max-height: 90vh; /* Ocupa máximo el 90% de la altura de la pantalla */
+    overflow-y: auto;  /* Activa la barra de desplazamiento vertical si es necesario */
+    
+    border: 1px solid #1a3a4a;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    color: rgb(179, 173, 173);
+    padding: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.8rem;
+
+
+}
+
+/* Grid de dos columnas */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+}
+
+/* Imagen a la izquierda */
+.modal-img-container img {
+    width: 100%;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.767);
+    padding: 10px;
+    object-fit: contain;
+    height: 550px;
+}
+
+/* Info a la derecha TITULO */
+.modal-info h2 {
+     font-size: 1.8rem; margin-bottom: 10px;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     color: white
+ }
+.modal-price { font-size: 2.5rem; color: #00d4ff; font-weight: bold; }
+.category-tag {
+    color: #03caf1;
+}
+
+.description-title  {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #3982b3;
+    font-weight: bold;
+}
+
+.modal-price {
+    color: #f74f0d;
+    font-family: 'Times New Roman', Times, serif;
+}
+.info-extra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Botón Grande de Carrito */
+.btn-add-big {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #00d4ff, #a033ff);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px; right: 20px;
+    background: none; border: none;
+    color: #8da2b5; font-size: 2rem; cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sección de Cantidad */
+.quantity-section {
+    margin: 20px 0;
+}
+
+.section-title {
+    color: #00d4ff;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-qty {
+    background: transparent;
+    border: 1px solid #1a3a4a;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+}
+
+.btn-qty:hover {
+    border-color: #00d4ff;
+    background: rgba(0, 212, 255, 0.1);
+}
+
+#product-qty {
+    font-size: 1.5rem;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Fila de Subtotal */
+.subtotal-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #1a2a3a;
+}
+
+#product-subtotal {
+    color: #00d4ff;
+    font-size: 1.4rem;
+    font-weight: bold;
 }
