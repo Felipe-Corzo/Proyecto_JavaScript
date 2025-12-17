@@ -49,19 +49,31 @@ header {
     cursor: pointer;
 }
 
-.loading {
-    display: flex;
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.466);
+    z-index: 9999;
+    /* Por defecto oculto */
+    display: none;
+
+}
+#loading.active {
+    display: flex !important;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .loader {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     animation: rotate 0.5s linear infinite;
     
 }
+
 
 @keyframes rotate {
     from {
@@ -72,14 +84,114 @@ header {
     }
 }
 
+
+
+/*ESTILO PARA FILTROS*/
+
+
+:root {
+    --bg-dark: #0a111a;
+    --card-bg: #0d1724;
+    --accent-purple: #e74e07d0;
+    --accent-cyan: #00233f;
+    --text-gray: #8a95a5;
+}
+
+body { background-color: var(--bg-dark); color: white; font-family: sans-serif; }
+
+.filter-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #1a2a3a;
+    width: 450px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.filter-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.filter-header h2 { font-size: 1.2rem; margin: 0; }
+
+.label { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 12px; }
+
+/* Botones de Categoría */
+.category-buttons { display: flex; gap: 10px; margin-bottom: 25px; }
+
+.btn-category {
+    background: #1e293b;
+    border: none;
+    color: var(--text-gray);
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-category.active {
+    background-color: #0d1724;
+    color: white;
+    box-shadow: 0 0 15px rgba(240, 100, 7, 0.507);
+    border: 1px solid rgba(228, 93, 15, 0.267);
+}
+
+/* Slider de Precio Personalizado */
+.price-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #17253b;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* El círculo del slider */
+.price-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: rgb(240, 99, 5);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: 0 0 5px var(--accent-cyan);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*ESTILO PARA LAS TARJETAS DE LOS PRODUCTOS */
 /* Contenedor principal que mencionaste en tu HTML */
 #products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 25px;
-    padding: 25px;
+    padding: 80px;
     background-color: #050a12;
+    
 }
 
 /* La clase .product que creas en JS */
@@ -223,7 +335,6 @@ header {
     cursor: pointer;
 }
 
-
 /* Estilos para el modal de detalles  POPPUP*/
 
 /* Overlay (Fondo translúcido) */
@@ -267,6 +378,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 70px;
+    
 }
 
 /* Imagen a la izquierda */

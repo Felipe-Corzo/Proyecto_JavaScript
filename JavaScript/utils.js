@@ -4,13 +4,13 @@ const cartCountElement = document.getElementById('carrito');
 
 function showLoading() {
     if (loadingElement) {
-        loadingElement.style.display = 'block';
+        loadingElement.classList.add('active');
     }
 }
 
 function hideLoading() {
     if (loadingElement) {
-        loadingElement.style.display = 'none';
+        loadingElement.classList.remove('active');
     }
 }
 

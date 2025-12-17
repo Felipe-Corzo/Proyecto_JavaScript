@@ -102,7 +102,7 @@ async function openModal(id) {
             </div>
 
             <button class="btn-add-big" id="main-add-btn" onclick="addToCar(${product.id}, currentQty)">
-                 Agregar ${currentQty} producto al Carrito 🛒
+                 Add ${currentQty} product to cart 🛒
             </button>
         </div>
     `;
@@ -141,4 +141,5 @@ function changeQuantity(delta) {
     // Actualizar el texto del botón
     const textoProducto = currentQty === 1 ? 'producto' : 'productos';
     mainBtn.innerHTML = `🛒 Agregar ${currentQty} ${textoProducto} al Carrito`;
-}
+}   
+

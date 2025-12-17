@@ -23,6 +23,30 @@
        </div>
     </header>
 
+    <section class="filter-card">
+        <div class="filter-header">
+            <span class="icon-filter">▼</span>
+            <h2>Filtros</h2>
+        </div>
+    
+        <div class="filter-group">
+            <p class="label">Categoría</p>
+            <div class="category-buttons">
+                <button class="btn-category active">Todos</button>
+                <button class="btn-category">Electrónicos</button>
+                <button class="btn-category">Joyas</button>
+                <button class="btn-category">Ropa</button>
+            </div>
+        </div>
+    
+        <div class="filter-group">
+            <p class="label">Precio: <span id="price-range">$0 - $2000</span></p>
+            <div class="range-container">
+                <input type="range" class="price-slider" min="0" max="2000" value="2000">
+            </div>
+        </div>
+    </section>
+
     <section class="container">
         <div class="loading" id="loading">
             <img src="img/loader.svg" alt="loading" class="loader">
@@ -36,7 +60,7 @@
     <script src="JavaScript/utils.js"></script>
     <script src="JavaScript/index.js"></script>
 
-    /* Modal de detalles POPPUP*/
+    
 
     <div id="modal-overlay" class="modal-overlay">
     <div class="modal-content">
