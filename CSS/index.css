@@ -100,13 +100,14 @@ header {
 body { background-color: var(--bg-dark); color: white; font-family: sans-serif; }
 
 .filter-card {
-    background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 15px;
-    border: 1px solid #1a2a3a;
-    width: 450px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    margin-left: 33%;
+    margin: 20px auto;    /* Centra la tarjeta horizontalmente */
+    max-width: 1000px;     /* Ajusta este ancho según prefieras */
+    width: 90%;           /* Responsivo para móviles */
+    padding: 20px;
+    background-color: #0b111b; /* Color oscuro que se ve en tu imagen */
+    border-radius: 12px;
+    box-shadow:0px -12px 10px -10px rgba(255, 115, 0, 0.6), /* Sombra superior */
+                0px 12px 10px -10px rgba(255, 115, 0, 0.6);  /* Sombra inferior */
 }
 
 .filter-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
@@ -114,22 +115,57 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
 
 .label { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 12px; }
 
+/*BARRA DE BUSQUEDA*/
+.search-input {
+    width: 95%;
+    padding: 10px 15px;
+    background: #1a222c; /* Un tono más claro que el fondo de la tarjeta */
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    transition: border-color 0.3s ease;
+
+}
+
+.search-input:focus {
+    border-color: #ff7300; /* Resplandor naranja al hacer clic */
+    box-shadow: 0 0 5px rgba(255, 115, 0, 0.3);
+}
+
+
+
+
 /* Botones de Categoría */
-.category-buttons { display: flex; gap: 10px; margin-bottom: 25px; }
+.category-buttons { 
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    flex-wrap: wrap;        /* Si no caben, bajan a la siguiente línea */
+    gap: 15px;              /* Espacio entre cada botón */
+    margin-top: 10px;
+ }
 
 .btn-category {
     background: #1e293b;
     border: none;
-    color: rgb(214, 210, 210);
+    color: rgba(0, 140, 255, 0.3);
     padding: 8px 18px;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
+    width: 154px;
+    height: 110px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column; /* Alinea texto arriba e icono abajo (o viceversa) */
+    align-items: center;    /* Centra el contenido del botón */
+    
+    /* Agrega aquí tus estilos de borde y fondo */
 }
 
 .btn-category.active {
     background-color: #0d1724;
-    color: white;
+    color: rgba(233, 72, 9, 0.473);
     box-shadow: 0 0 15px rgba(240, 100, 7, 0.507);
     border: 1px solid rgba(228, 93, 15, 0.267);
 }
