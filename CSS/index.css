@@ -1,16 +1,20 @@
 body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    background-color: #f4f4f4;
 }   
 header {
-    background-color: #b9bfc5;
+    position: sticky;
+    top: 0;
+    background-color: #0b111be8;
     padding: 20px;
     text-align: center;
     font-family: Arial, sans-serif;
     width: 100%;
+    box-shadow: 0 1px 6px rgba(169, 174, 202, 0.8);
     height: 80px; 
+    z-index: 1000;
+    backdrop-filter: blur(7px);
+    
     }
 .header-contenedor {
     display: flex;
@@ -18,35 +22,89 @@ header {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    
+
 }
 
 .header-contenedor a{
     text-decoration: none;
-    color: rgb(92, 47, 47);
-    font-size: 1.2em;
-    font-weight: bold;
+    
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 15px;}
+    gap: 15px;
+}
+.header-left h1 {
+    color: rgba(255, 255, 255, 0.904);
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0 0 5px rgba(0, 110, 255, 06);
+    cursor: pointer;
+    
+}   
 
 .header-left img {
     width: 50px;
     height: 50px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 8px rgba(24, 101, 216, 0.8));
+}
+
+.header-left img:hover {
+    filter: drop-shadow(0 0 12px rgba(255, 115, 0, 0.616));
 }
 
 .header-right {
     display: flex;
     align-items: center;
     gap: 15px;
+    
+   
+    
+}
+.header-right img {
+    
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(1deg) brightness(103%) contrast(105%)
+            drop-shadow(0 0 3px rgba(255, 115, 0, 0.8));
+    
+    border-radius: 20%  ;
+    border: #068af7 3px solid;
+        
+}
+#carr {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px;
+   
+}
+
+#carr:hover {
+    filter:invert(48%) sepia(79%) saturate(2476%) hue-rotate(1deg) brightness(103%) contrast(105%) 
+    drop-shadow(0 0 20px rgba(0, 102, 255, 2));
+
+}   
+
+#carrito{
+    background-color: rgb(255, 136, 0);
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 0.8rem;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    position: relative;
+    top: -10px;
+    right: 10px;
+    box-shadow: 0 0 5px rgb(245, 100, 4);
 }
 
 .header-contenedor img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
+
 }
 
 #loading {
@@ -148,12 +206,12 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
 .btn-category {
     background: #1e293b;
     border: none;
-    color: rgba(0, 140, 255, 0.3);
+    color: rgba(0, 140, 255, 0.616);
     padding: 8px 18px;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
-    width: 154px;
+    width: 156px;
     height: 110px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
@@ -165,7 +223,7 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
 
 .btn-category.active {
     background-color: #0d1724;
-    color: rgba(233, 72, 9, 0.473);
+    color: rgb(255, 72, 0);
     box-shadow: 0 0 15px rgba(240, 100, 7, 0.507);
     border: 1px solid rgba(228, 93, 15, 0.267);
 }
@@ -425,7 +483,8 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
     background: rgba(255, 255, 255, 0.767);
     padding: 10px;
     object-fit: contain;
-    height: 550px;
+    height: 450px;
+    
 }
 
 /* Info a la derecha TITULO */
@@ -434,9 +493,14 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
      font-family: Verdana, Geneva, Tahoma, sans-serif;
      color: white
  }
-.modal-price { font-size: 2.5rem; color: #00d4ff; font-weight: bold; }
+.modal-price { font-size: 2.9rem; color: #ff6600; font-weight: bold; }
 .category-tag {
-    color: #03caf1;
+    color: #020202;
+    background-color: #ff6600be;
+    border-radius: 25px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    box-shadow: 0 0 10px rgba(255, 115, 0, 0.5);
 }
 
 .description-title  {
@@ -447,8 +511,8 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
 }
 
 .modal-price {
-    color: #f74f0d;
-    font-family: 'Times New Roman', Times, serif;
+    color: #f74f0dd8;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 .info-extra {
     display: grid;
@@ -459,6 +523,7 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
     margin: 20px 0;
     font-size: 0.9rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid #e96208bd;
 }
 
 /* Botón Grande de Carrito */
