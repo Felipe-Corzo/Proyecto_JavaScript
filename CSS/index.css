@@ -106,6 +106,7 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
     border: 1px solid #1a2a3a;
     width: 450px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-left: 33%;
 }
 
 .filter-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
@@ -119,7 +120,7 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
 .btn-category {
     background: #1e293b;
     border: none;
-    color: var(--text-gray);
+    color: rgb(214, 210, 210);
     padding: 8px 18px;
     border-radius: 20px;
     cursor: pointer;
@@ -152,7 +153,7 @@ body { background-color: var(--bg-dark); color: white; font-family: sans-serif; 
     border-radius: 50%;
     cursor: pointer;
     border: 5px solid rgb(255, 255, 255);
-    box-shadow: 0 0 5px var(--accent-cyan);
+    box-shadow: 0 0 10px #ff5100;
 }
 
 
