@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <!-- HEADER================================================================ -->
     <header>
        <div class="header-contenedor">
             <a href="index.html">
@@ -23,13 +24,17 @@
        </div>
     </header>
 
+     <!-- SECCION DE FILTROS ============================================================== -->
+
     <section class="filter-card">
         <div class="filter-header">
             <span class="icon-filter">▼</span>
             <h2>Filtros</h2>
         </div>
 
+       
 
+        <!-- FILTRO POR CATEGORIA (BOTONES)============================================== -->
         <div class="filter-group">
             <p class="label">Categoría</p>
             <div class="category-buttons">
@@ -272,13 +277,14 @@
                 </button>
             </div>
         </div>
+        <!-- FILTRO POR PRECION SLIDER============================================== -->
         <div class="filter-group">
             <p class="label">Precio: <span id="price-range">$0 - $2000</span></p>
             <div class="range-container">
                 <input type="range" class="price-slider" min="0" max="2000" value="2000">
             </div>
         </div>
-
+        <!-- FILTRO POR NOMBRE (BARRA)============================================== -->
         <div class="filter-group">
             <p class="label">Buscar producto:</p>
             <div class="search-container">
@@ -286,6 +292,8 @@
             </div>
         </div>
     </section>
+
+    <!-- SECCION PRODUCTOS DE LA API ===================================================================== -->
 
     <section class="container">
         <div class="loading" id="loading">
@@ -295,12 +303,14 @@
 
         </div>
     </section>
-   
+
+    <!-- ENLACES CON JAVASCRIP ============================================================================== -->
     
     <script src="JavaScript/utils.js"></script>
     <script src="JavaScript/index.js"></script>
+    <script src="JavaScript/carrito.js"></script>
 
-
+    <!-- SECCION DEL POPPUP DETALLES DE LOS PRODUCTOS =======================================================================00 -->
 
     <div id="modal-overlay" class="modal-overlay">         
     <div class="modal-content"><h1>Product details</h1>
@@ -309,6 +319,33 @@
         <div id="modal-body" class="modal-grid">
             </div>
     </div>
-</div>
+    </div>
+
+    <!-- SECCION DEL POPPUP DE CARRITO DE COMPRAS ================================================================ -->
+
+    <div id="cart-overlay" class="cart-overlay">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <div class="cart-title">
+                    <span class="icon-cart">🛒</span>
+                    <h2>Carrito de Compras</h2>
+                </div>
+                <button id="close-cart" class="close-x">&times;</button>
+            </div>
+    
+            <div id="cart-items-container" class="cart-body">
+                </div>
+    
+            <div class="cart-footer">
+                <div class="cart-total-row">
+                    <span>Total:</span>
+                    <span id="cart-total-amount" class="total-cyan">$0.00</span>
+                </div>
+                <button class="btn-checkout">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>
