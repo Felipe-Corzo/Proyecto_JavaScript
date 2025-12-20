@@ -42,3 +42,9 @@ Proyect_javascript/
 │   └── style.css       
 └── img/
     
+## Pagina principal
+![alt text](image.png)
+## Vista del producto
+![alt text](imageC.png)
+## Carrito de compras
+![alt text](image-1.png)
