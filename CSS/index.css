@@ -748,20 +748,7 @@ header {
         font-size: 1rem;
     }
 
-    /* Ajuste para que el grid de productos no se vea apretado */
-    #products {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 15px;
-        padding: 0 10px;
-    }
+
     
-    .card-footer {
-        flex-direction: column; /* Botón de detalles arriba del de añadir */
-        gap: 5px;
-       
-    }
-    
-    .product-add {
-        width: 100%; /* Botón de carrito ancho completo en móvil */
-    }
+   
 }
