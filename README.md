@@ -31,9 +31,11 @@
 
 
 ```bash
-Fake Store/
+Proyect_javascript/
 ├── index.html  
 ├── README.md
+├── analisis.md
+├── Wifeframe/
 ├── css/
 │   └── style.css       
 └── js/
