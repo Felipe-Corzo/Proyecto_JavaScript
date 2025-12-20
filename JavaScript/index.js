@@ -7,39 +7,15 @@ let currentPrice = 0;
 async function getAllProducts() {
     showLoading();
     try {
+        const response = await fetch('https://fakestoreapi.com/products');
+        const data = await response.json();
+        products = data; // Guardamos en la variable global
 
-        const response = await fetch('https://fakestoreapi.com/products')
-            .then(response => response.json())
-            .then(data => products = data);
-
-        response.forEach(product => {
-            const productElement = document.createElement('div');
-            productElement.classList.add('product');
-            productElement.innerHTML = `
-                 <div class='card'>
-                    <p class='product-price'>US$ ${product.price}</p>                    
-                    <img class='product-image' src='${product.image}' alt='${product.title}'>
-                    <p class='product-category' >${product.category}</p>
-                    <h1 class='product-title' >${product.title}</h1>                    
-                    
-                    <div class='card-footer'>
-                        <button class='details-button' type='button' onclick='openModal(${product.id})'>Ver Detalles</button>
-                        <button class='product-add' type='button' onclick='addToCar(${product.id})'>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                        </button>
-                    </div>
-                 </div>
-                `;
-            productosContainer.appendChild(productElement);
-
-    });
-    hideLoading();
+        renderProducts(products); // Usamos la función de renderizado que ya creaste
+        hideLoading();
     } catch (error) {
         console.error('Error:', error);
+        hideLoading();
     }
 }
 
@@ -250,4 +226,61 @@ function renderProducts(productsList) {
         
         productosContainer.appendChild(productElement);
     });
+}
+
+// poppup carrito
+// Abrir el carrito
+document.getElementById('carr').addEventListener('click', () => {
+    renderCartItems(); // Dibujar los productos antes de mostrar
+    document.getElementById('cart-overlay').style.display = 'flex';
+});
+
+// Cerrar el carrito
+function closeCart() {
+    document.getElementById('cart-overlay').style.display = 'none';
+}
+
+// Cerrar si hacen clic fuera del carrito
+window.addEventListener('click', (event) => {
+    const cartOverlay = document.getElementById('cart-overlay');
+    if (event.target == cartOverlay) closeCart();
+});
+
+
+function renderCartItems() {
+    const cart = getCart();
+    const cartBody = document.querySelector('.cart-body');
+    const totalElement = document.getElementById('cart-total');
+    
+    cartBody.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        cartBody.innerHTML += `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="item-details">
+                    <span class="item-category">${item.category}</span>
+                    <h4>${item.title}</h4>
+                    <span class="item-price">${item.quantity} x $${item.price.toFixed(2)}</span>
+                </div>
+                <button class="btn-remove" onclick="removeFromCart(${item.id})">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                </button>
+            </div>
+        `;
+    });
+
+    totalElement.innerText = `$${total.toFixed(2)}`;
+}
+
+// Función para eliminar productos
+function removeFromCart(productId) {
+    let cart = getCart();
+    cart = cart.filter(item => item.id !== productId);
+    saveCartToLocalStorage(cart);
+    renderCartItems(); // Refrescar la vista del carrito
 }

@@ -75,8 +75,8 @@ header {
         
 }
 #carr {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     cursor: pointer;
     padding: 5px;
    
@@ -188,24 +188,28 @@ header {
     display: flex;
     justify-content: center; 
     flex-wrap: wrap;        
-    gap: 15px;              
+    gap: 10px;              
     margin-top: 10px;
+    width: 100%; /* Asegura que ocupen el ancho del card */
  }
 
 .btn-category {
-    background: #1e293b;
+   background: #1e293b;
     border: none;
     color: rgba(0, 140, 255, 0.616);
-    padding: 8px 18px;
+    padding: 15px;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
-    width: 156px;
-    height: 110px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* Cambio: width flexible */
+    min-width: 120px; 
+    flex: 1 1 120px; /* Esto permite que crezcan y se acomoden solos */
+    height: auto; 
+    min-height: 100px;
     display: flex;
     flex-direction: column; 
     align-items: center;    
+    justify-content: center;   
     
 }
 
@@ -590,9 +594,11 @@ header {
     background: rgba(0, 0, 0, 0.85);
     display: none; 
     justify-content: center;
-    align-items: center;
     z-index: 9999;
     backdrop-filter: blur(4px);
+    align-items: flex-start; 
+    padding: 20px; /* Espacio de seguridad para que no pegue a los bordes */
+    overflow-y: auto;
 }
 
 .cart-modal {
@@ -604,6 +610,10 @@ header {
     box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
     overflow: hidden;
     color: var(--cart-text);
+    margin: auto; /* Centra el modal cuando es pequeño */
+    max-height: 90vh; /* No permite que sea más alto que el 90% de la pantalla */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header */
@@ -627,6 +637,9 @@ header {
     padding: 1rem;
     max-height: 450px;
     overflow-y: auto;
+    flex: 1; /* Toma todo el espacio disponible entre el header y el footer */
+    overflow-y: auto; /* Activa el scroll solo aquí */
+    padding-right: 5px;
 }
 
 .cart-item {
@@ -666,4 +679,89 @@ header {
     width: 100%; padding: 14px; border: none; border-radius: 10px;
     background: linear-gradient(90deg, var(--cart-accent), var(--cart-purple));
     color: white; font-weight: bold; font-size: 1rem; cursor: pointer;
+}
+
+/* Media Query para Laptops y Tablets */
+@media (max-height: 800px) {
+    .cart-body {
+        max-height: 50vh; /* Reducimos el espacio de los productos en pantallas bajas */
+    }
+}
+
+/* Media Query para Celulares */
+@media (max-width: 480px) {
+    .cart-modal {
+        width: 95%;
+        margin-top: 10px;
+    }
+    
+    .cart-item {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Laptops y Tablets (Pantallas medianas) */
+@media (max-width: 1024px) {
+    #products {
+        padding: 0 20px; /* Reducimos el padding lateral exagerado de 80px */
+    }
+}
+
+/* Tablets y Celulares Grandes */
+@media (max-width: 768px) {
+    .header-left h1 {
+        font-size: 1.5rem; /* Título más pequeño */
+    }
+
+    .modal-grid {
+        grid-template-columns: 1fr; /* Una sola columna en el popup de detalles */
+        gap: 20px;
+    }
+
+    .modal-img-container img {
+        height: 300px; /* Imagen menos alta en móvil */
+    }
+
+    .filter-card {
+        padding: 15px;
+    }
+}
+
+/* Celulares Pequeños */
+@media (max-width: 480px) {
+    .header-contenedor {
+        padding: 0 10px;
+    }
+
+    .header-left h1 {
+        display: none; /* Ocultamos el texto del logo para dejar solo el icono en móviles muy pequeños */
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+    }
+
+    .product-title {
+        font-size: 1rem;
+    }
+
+    /* Ajuste para que el grid de productos no se vea apretado */
+    #products {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+        padding: 0 10px;
+    }
+    
+    .card-footer {
+        flex-direction: column; /* Botón de detalles arriba del de añadir */
+        gap: 5px;
+       
+    }
+    
+    .product-add {
+        width: 100%; /* Botón de carrito ancho completo en móvil */
+    }
 }

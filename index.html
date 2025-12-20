@@ -17,10 +17,10 @@
                 <h1>Fake Shop</h1>
             </div>
             </a>
-            <a href="HTML/carrito.html" class="header-right">
-                <img id="carr" src="img/shopping-cart.svg" alt="carrito">
-                <span class="carrito" id="carrito"></span>
-            </a>
+            <div class="header-right">
+                <img src="img/shopping-cart.svg" id="carr" alt="Carrito">
+                <span id="carrito">0</span>
+            </div>
        </div>
     </header>
 
@@ -308,7 +308,7 @@
     
     <script src="JavaScript/utils.js"></script>
     <script src="JavaScript/index.js"></script>
-    <script src="JavaScript/carrito.js"></script>
+    
 
     <!-- SECCION DEL POPPUP DETALLES DE LOS PRODUCTOS =======================================================================00 -->
 
@@ -324,27 +324,31 @@
     <!-- SECCION DEL POPPUP DE CARRITO DE COMPRAS ================================================================ -->
 
     <div id="cart-overlay" class="cart-overlay">
-        <div class="cart-modal">
-            <div class="cart-header">
-                <div class="cart-title">
-                    <span class="icon-cart">🛒</span>
-                    <h2>Carrito de Compras</h2>
-                </div>
-                <button id="close-cart" class="close-x">&times;</button>
+    <div class="cart-modal">
+        <div class="cart-header">
+            <div class="cart-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <h2>Tu Carrito</h2>
             </div>
-    
-            <div id="cart-items-container" class="cart-body">
-                </div>
-    
-            <div class="cart-footer">
-                <div class="cart-total-row">
-                    <span>Total:</span>
-                    <span id="cart-total-amount" class="total-cyan">$0.00</span>
-                </div>
-                <button class="btn-checkout">Finalizar Compra</button>
+            <button class="close-x" onclick="closeCart()">&times;</button>
+        </div>
+
+        <div class="cart-body">
             </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="cart-total" class="total-cyan">$0.00</span>
+            </div>
+            <button class="btn-checkout">Finalizar Compra</button>
         </div>
     </div>
+</div>
 
 
 </body>
