@@ -35,13 +35,16 @@ Proyect_javascript/
 ├── index.html  
 ├── README.md
 ├── analisis.md
-├── Wifeframe/
-├── css/
-│   └── style.css       
-└── js/
-│   └── style.css       
+├── Wireframe/
+├── CSS/
+│   └── index.css       
+└── JavaScript/
+│   ├── index.js
+│   ├── carrito.js
+│   └── utils.js       
 └── img/
     
+```
 
 ![Pagina principal](Wireframe/image.png)
 
