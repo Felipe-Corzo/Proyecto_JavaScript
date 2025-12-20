@@ -164,8 +164,6 @@ header {
 .filter-header h2 { font-size: 1.2rem; margin: 0; }
 
 .label { color: #8a95a5; font-size: 0.9rem; margin-bottom: 12px; }
-
-/*BARRA DE BUSQUEDA*/
 .search-input {
     width: 95%;
     padding: 10px 15px;
@@ -183,14 +181,14 @@ header {
     box-shadow: 0 0 5px rgba(255, 115, 0, 0.3);
 }
 
-/* Botones de Categoría */
+
 .category-buttons { 
     display: flex;
     justify-content: center; 
     flex-wrap: wrap;        
     gap: 10px;              
     margin-top: 10px;
-    width: 100%; /* Asegura que ocupen el ancho del card */
+    width: 100%; 
  }
 
 .btn-category {
@@ -201,9 +199,8 @@ header {
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
-    /* Cambio: width flexible */
     min-width: 120px; 
-    flex: 1 1 120px; /* Esto permite que crezcan y se acomoden solos */
+    flex: 1 1 120px;
     height: auto; 
     min-height: 100px;
     display: flex;
@@ -219,7 +216,7 @@ header {
     box-shadow: 0 0 15px rgba(240, 100, 7, 0.507);
     border: 1px solid rgba(228, 93, 15, 0.267);
 }
-/* Slider de Precio Personalizado */
+
 .price-slider {
     -webkit-appearance: none;
     width: 100%;
@@ -229,7 +226,6 @@ header {
     outline: none;
 }
 
-/* El círculo del slider */
 .price-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 18px;
@@ -250,8 +246,6 @@ header {
     padding: 20px;             
     min-height: 100vh;     
   }
-
-
 #products {
 
     display: grid;
@@ -260,7 +254,7 @@ header {
     gap: 25px;
     padding:  0 80px;
     max-width: 1400px;
-    
+
 }
 
 .product {
@@ -298,7 +292,7 @@ header {
     overflow: hidden;
     display: block;
 }
-/* Imagen del producto */
+
 .product-image {
     width: 100%;
     height: 200px;
@@ -318,7 +312,6 @@ header {
     text-transform: capitalize;
 }
 
-/* Título del producto */
 .product-title {
     color: #ffffff;
     font-size: 1.1rem;
@@ -329,8 +322,6 @@ header {
     text-overflow: ellipsis;
 }
 
-
-/* Precio */
 .product-price {
     color: #f74f0d;
     font-weight: bold;
@@ -340,7 +331,6 @@ header {
    
 }
 
-/* Botón Añadir al carrito */
 .product-add {
     
     width: 45px;
@@ -404,17 +394,13 @@ header {
     align-items: center;
 }
 
-/* Caja del Modal */
 .modal-content {
 
     background-color: #0b141e;
     width: 90%;
     max-width: 980px;
-    
-    /* LIMITAR ALTURA Y ACTIVAR SCROLL */
-    max-height: 90vh; /* Ocupa máximo el 90% de la altura de la pantalla */
-    overflow-y: auto;  /* Activa la barra de desplazamiento vertical si es necesario */
-    
+    max-height: 90vh; 
+    overflow-y: auto;  
     border: 1px solid #1a3a4a;
     border-radius: 20px;
     position: relative;
@@ -423,11 +409,7 @@ header {
     padding: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 0.8rem;
-
-
 }
-
-/* Grid de dos columnas */
 .modal-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -435,7 +417,6 @@ header {
     
 }
 
-/* Imagen a la izquierda */
 .modal-img-container img {
     width: 100%;
     border-radius: 15px;
@@ -446,7 +427,6 @@ header {
     
 }
 
-/* Info a la derecha TITULO */
 .modal-info h2 {
      font-size: 1.8rem; margin-bottom: 10px;
      font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -485,7 +465,6 @@ header {
     border: 1px solid #e96208bd;
 }
 
-/* Botón Grande de Carrito */
 .btn-add-big {
     width: 100%;
     padding: 15px;
@@ -514,7 +493,6 @@ header {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Sección de Cantidad */
 .quantity-section {
     margin: 20px 0;
 }
@@ -556,7 +534,6 @@ header {
     text-align: center;
 }
 
-/* Fila de Subtotal */
 .subtotal-row {
     display: flex;
     justify-content: space-between;
@@ -581,13 +558,12 @@ header {
 :root {
     --cart-bg: #0d1117;
     --cart-card: #161b22;
-    --cart-accent: #06b6d4; /* Cyan */
-    --cart-purple: #8b5cf6; /* Morado */
+    --cart-accent: #06b6d4; 
+    --cart-purple: #8b5cf6; 
     --cart-text: #ffffff;
     --cart-border: #30363d;
 }
 
-/* Fondo oscuro detrás del popup */
 .cart-overlay {
     position: fixed;
     inset: 0;
@@ -597,7 +573,7 @@ header {
     z-index: 9999;
     backdrop-filter: blur(4px);
     align-items: flex-start; 
-    padding: 20px; /* Espacio de seguridad para que no pegue a los bordes */
+    padding: 20px;
     overflow-y: auto;
 }
 
@@ -610,13 +586,13 @@ header {
     box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
     overflow: hidden;
     color: var(--cart-text);
-    margin: auto; /* Centra el modal cuando es pequeño */
-    max-height: 90vh; /* No permite que sea más alto que el 90% de la pantalla */
+    margin: auto;
+    max-height: 90vh; 
     display: flex;
     flex-direction: column;
 }
 
-/* Header */
+
 .cart-header {
     padding: 1.5rem;
     display: flex;
@@ -632,13 +608,12 @@ header {
     font-size: 1.8rem; cursor: pointer;
 }
 
-/* Items */
 .cart-body {
     padding: 1rem;
     max-height: 450px;
     overflow-y: auto;
-    flex: 1; /* Toma todo el espacio disponible entre el header y el footer */
-    overflow-y: auto; /* Activa el scroll solo aquí */
+    flex: 1;
+    overflow-y: auto;
     padding-right: 5px;
 }
 
@@ -659,7 +634,7 @@ header {
 
 .item-details h4 { margin: 0 0 5px 0; font-size: 0.95rem; }
 .item-category { color: var(--cart-accent); font-size: 0.75rem; display: block; }
-.item-price { color: var(--cart-purple); font-weight: bold; margin-top: 5px; display: block; }
+.item-price { color: #f57906; font-weight: bold; margin-top: 5px; display: block; }
 
 .btn-remove {
     position: absolute; right: 15px; bottom: 15px;
@@ -667,7 +642,6 @@ header {
     cursor: pointer; font-size: 1.2rem;
 }
 
-/* Footer */
 .cart-footer { padding: 1.5rem; border-top: 1px solid var(--cart-border); }
 .cart-total-row {
     display: flex; justify-content: space-between;
@@ -677,18 +651,20 @@ header {
 
 .btn-checkout {
     width: 100%; padding: 14px; border: none; border-radius: 10px;
-    background: linear-gradient(90deg, var(--cart-accent), var(--cart-purple));
-    color: white; font-weight: bold; font-size: 1rem; cursor: pointer;
+    background: #f74f0d;
+    color: rgb(2, 2, 2); font-weight: bold; font-size: 1rem; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(219, 62, 0, 0.479);
 }
 
-/* Media Query para Laptops y Tablets */
+/* RESPONSIVE  =========================================================================================================
+*/
 @media (max-height: 800px) {
     .cart-body {
-        max-height: 50vh; /* Reducimos el espacio de los productos en pantallas bajas */
+        max-height: 50vh;
     }
 }
 
-/* Media Query para Celulares */
+
 @media (max-width: 480px) {
     .cart-modal {
         width: 95%;
@@ -701,28 +677,27 @@ header {
     }
 }
 
-/* --- RESPONSIVE DESIGN --- */
 
-/* Laptops y Tablets (Pantallas medianas) */
+
 @media (max-width: 1024px) {
     #products {
-        padding: 0 20px; /* Reducimos el padding lateral exagerado de 80px */
+        padding: 0 20px; 
     }
 }
 
-/* Tablets y Celulares Grandes */
+
 @media (max-width: 768px) {
     .header-left h1 {
-        font-size: 1.5rem; /* Título más pequeño */
+        font-size: 1.2rem; 
     }
 
     .modal-grid {
-        grid-template-columns: 1fr; /* Una sola columna en el popup de detalles */
+        grid-template-columns: 1fr; 
         gap: 20px;
     }
 
     .modal-img-container img {
-        height: 300px; /* Imagen menos alta en móvil */
+        height: 300px; 
     }
 
     .filter-card {
@@ -730,14 +705,13 @@ header {
     }
 }
 
-/* Celulares Pequeños */
 @media (max-width: 480px) {
     .header-contenedor {
         padding: 0 10px;
     }
 
     .header-left h1 {
-        display: none; /* Ocultamos el texto del logo para dejar solo el icono en móviles muy pequeños */
+        font-size: 1.2rem; 
     }
 
     .product-price {

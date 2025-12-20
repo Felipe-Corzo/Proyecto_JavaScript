@@ -3,15 +3,15 @@ const productosContainer = document.getElementById('products');
 let products = [];
 let currentQty = 1;
 let currentPrice = 0;
-// Función para obtener los productos desde la API
+
 async function getAllProducts() {
     showLoading();
     try {
         const response = await fetch('https://fakestoreapi.com/products');
         const data = await response.json();
-        products = data; // Guardamos en la variable global
+        products = data;
 
-        renderProducts(products); // Usamos la función de renderizado que ya creaste
+        renderProducts(products); 
         hideLoading();
     } catch (error) {
         console.error('Error:', error);
@@ -36,13 +36,13 @@ updateCarstCount();
 
 
 // FUNCION PARA MOSTRAR Y CERRAR EL POPPUP DE DETALLES DEL PRODUCTO===================================================================================0
-// Suponiendo que 'products' es el array donde guardaste los datos de la API
+
 async function openModal(id) {
     const modalBody = document.getElementById('modal-body');
     const product = products.find(p => p.id === id);
     if (!product) return;
-    currentQty = 1; // Reseteamos cantidad al abrir
-    currentPrice = product.price; // Guardamos el precio
+    currentQty = 1;
+    currentPrice = product.price;
 
     modalBody.innerHTML = `
         <div class="modal-img-container">
@@ -58,13 +58,13 @@ async function openModal(id) {
             
             <div class="info-extra">
                 <div><span>ID:</span> #${product.id}</div>
-                <div><span>Disponibilidad:</span> En Stock</div>
-                <div><span>Envío:</span> Gratis</div>
-                <div><span>Garantía:</span> 12 meses</div>
+                <div><span>Availability:</span> In Stock</div>
+                <div><span>Shipping:</span> Free</div>
+                <div><span>Warranty:</span> 12 months</div>
             </div>
 
             <div class="quantity-section">
-                <p class="section-title">Cantidad</p>
+                <p class="section-title">Quantity</p>
                 <div class="quantity-controls">
                     <button class="btn-qty" onclick="changeQuantity(-1)">-</button>
                     <span id="product-qty">1</span>
@@ -91,7 +91,7 @@ function closeModal() {
     document.getElementById('modal-overlay').style.display = 'none';
 }
 
-// Cerrar si hacen clic fuera del cuadro
+
 window.onclick = function(event) {
     const overlay = document.getElementById('modal-overlay');
     if (event.target == overlay) closeModal();
@@ -102,53 +102,45 @@ function changeQuantity(delta) {
     const subtotalDisplay = document.getElementById('product-subtotal');
     const mainBtn = document.getElementById('main-add-btn');
 
-    // Evitar que la cantidad sea menor a 1
+   
     if (currentQty + delta < 1) return;
 
     currentQty += delta;
-    
-    // Actualizar la interfaz
+  
     qtyDisplay.innerText = currentQty;
     
-    // Calcular subtotal (precio * cantidad)
     const subtotal = (currentPrice * currentQty).toFixed(2);
     subtotalDisplay.innerText = `$${subtotal}`;
-    
-    // Actualizar el texto del botón
-    const textoProducto = currentQty === 1 ? 'producto' : 'productos';
-    mainBtn.innerHTML = `🛒 Agregar ${currentQty} ${textoProducto} al Carrito`;
+ 
+    const textoProducto = currentQty === 1 ? 'product' : 'products';
+    mainBtn.innerHTML = `🛒 Add ${currentQty} ${textoProducto} to Cart`;
 }   
 
 
 // FUNCIONES PARA EL FILTROOOOOOOOO============================================================================
 
-// 1. Referencias a los elementos del DOM
+
 const searchInput = document.getElementById('product-search');
 const categoryButtons = document.querySelectorAll('.btn-category');
 const priceSlider = document.querySelector('.price-slider');
 const priceText = document.getElementById('price-range');
 
-// 2. Estado global de los filtros
+
 let activeCategory = 'all';
 
-// --- EVENTOS ---
-
-// Filtro de Búsqueda: Se activa al presionar Enter o perder el foco
 searchInput.addEventListener('change', () => {
     applyFilters();
 });
 
-// Filtro de Categoría: Manejo de botones
+
 categoryButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        // Estética: quitar clase activa de todos y ponerla en el seleccionado
+       
         categoryButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        // Capturar texto y normalizarlo para que coincida con la API
         let rawText = btn.innerText.split('\n')[0].trim().toLowerCase();
-        
-        // Mapeo de nombres (corrección de "Eletronics" y "Jowelry" del HTML)
+
         if (rawText.includes("all")) activeCategory = 'all';
         else if (rawText.includes("eletronics")) activeCategory = 'electronics';
         else if (rawText.includes("jowelry")) activeCategory = 'jewelery';
@@ -158,50 +150,42 @@ categoryButtons.forEach(btn => {
     });
 });
 
-// Filtro de Precio: Se activa al soltar el slider
 priceSlider.addEventListener('change', (e) => {
     priceText.innerText = `$0 - $${e.target.value}`;
     applyFilters();
 });
 
 
-// --- LÓGICA DE FILTRADO ---
+// LoGICA DE FILTRADO==========================================================================0
 
 function applyFilters() {
     const maxPrice = parseFloat(priceSlider.value);
     const searchTerm = searchInput.value.toLowerCase().trim();
 
-    // Filtramos la variable global 'products' que llenaste con la API
     const filtered = products.filter(p => {
-        // Condición 1: Búsqueda por nombre
+
         const matchName = p.title.toLowerCase().includes(searchTerm);
         
-        // Condición 2: Categoría
         const matchCategory = activeCategory === 'all' || p.category === activeCategory;
         
-        // Condición 3: Precio máximo
         const matchPrice = p.price <= maxPrice;
-
-        // El producto debe cumplir las tres condiciones simultáneamente
         return matchName && matchCategory && matchPrice;
     });
 
     renderProducts(filtered);
 }
 
-// --- RENDERIZADO EN EL HTML ---
+// RENDERIZADO EN EL HTML =========================================================================000
 
 function renderProducts(productsList) {
-    // Limpiamos el contenedor actual
+
     productosContainer.innerHTML = '';
 
-    // Si no hay resultados, mostramos un mensaje
     if (productsList.length === 0) {
-        productosContainer.innerHTML = `<p class="no-results">No se encontraron productos que coincidan con los filtros.</p>`;
+        productosContainer.innerHTML = `<p class="no-results">No products found matching the filters.</p>`;
         return;
     }
 
-    // Dibujamos cada producto (Usando tu estructura HTML de la imagen)
     productsList.forEach(product => {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
@@ -213,7 +197,7 @@ function renderProducts(productsList) {
                 <p class='product-category'>${product.category}</p>
                 <h1 class='product-title'>${product.title}</h1>
                 <div class='card-footer'>
-                    <button class='details-button' onclick='openModal(${product.id})'>Ver Detalles</button>
+                    <button class='details-button' onclick='openModal(${product.id})'>View Details</button>
                     <button class='product-add' onclick='addToCar(${product.id})'>
                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -228,19 +212,18 @@ function renderProducts(productsList) {
     });
 }
 
-// poppup carrito
-// Abrir el carrito
+// poppup carrito==============================================================00
+
 document.getElementById('carr').addEventListener('click', () => {
-    renderCartItems(); // Dibujar los productos antes de mostrar
+    renderCartItems(); 
     document.getElementById('cart-overlay').style.display = 'flex';
 });
 
-// Cerrar el carrito
+
 function closeCart() {
     document.getElementById('cart-overlay').style.display = 'none';
 }
 
-// Cerrar si hacen clic fuera del carrito
 window.addEventListener('click', (event) => {
     const cartOverlay = document.getElementById('cart-overlay');
     if (event.target == cartOverlay) closeCart();
@@ -277,10 +260,9 @@ function renderCartItems() {
     totalElement.innerText = `$${total.toFixed(2)}`;
 }
 
-// Función para eliminar productos
 function removeFromCart(productId) {
     let cart = getCart();
     cart = cart.filter(item => item.id !== productId);
     saveCartToLocalStorage(cart);
-    renderCartItems(); // Refrescar la vista del carrito
+    renderCartItems(); 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
             </div>
             </a>
             <div class="header-right">
-                <img src="img/shopping-cart.svg" id="carr" alt="Carrito">
+                <img src="img/shopping-cart.svg" id="carr" alt="Cart">
                 <span id="carrito">0</span>
             </div>
        </div>
@@ -29,14 +29,14 @@
     <section class="filter-card">
         <div class="filter-header">
             <span class="icon-filter">▼</span>
-            <h2>Filtros</h2>
+            <h2>Filters</h2>
         </div>
 
        
 
         <!-- FILTRO POR CATEGORIA (BOTONES)============================================== -->
         <div class="filter-group">
-            <p class="label">Categoría</p>
+            <p class="label">Category</p>
             <div class="category-buttons">
                 <button class="btn-category active">All Products<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="60px" height="60px" viewBox="0 0 512.000000 512.000000"
@@ -279,16 +279,16 @@
         </div>
         <!-- FILTRO POR PRECION SLIDER============================================== -->
         <div class="filter-group">
-            <p class="label">Precio: <span id="price-range">$0 - $2000</span></p>
+            <p class="label">Price: <span id="price-range">$0 - $2000</span></p>
             <div class="range-container">
                 <input type="range" class="price-slider" min="0" max="2000" value="2000">
             </div>
         </div>
         <!-- FILTRO POR NOMBRE (BARRA)============================================== -->
         <div class="filter-group">
-            <p class="label">Buscar producto:</p>
+            <p class="label">Search product:</p>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Ej:  jacket..." id="product-search">
+                <input type="text" class="search-input" placeholder="Ex:  jacket..." id="product-search">
             </div>
         </div>
     </section>
@@ -332,7 +332,7 @@
                     <circle cx="20" cy="21" r="1"></circle>
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
-                <h2>Tu Carrito</h2>
+                <h2>Your Cart</h2>
             </div>
             <button class="close-x" onclick="closeCart()">&times;</button>
         </div>
@@ -345,7 +345,7 @@
                 <span>Total:</span>
                 <span id="cart-total" class="total-cyan">$0.00</span>
             </div>
-            <button class="btn-checkout">Finalizar Compra</button>
+            <button class="btn-checkout">Checkout</button>
         </div>
     </div>
 </div>

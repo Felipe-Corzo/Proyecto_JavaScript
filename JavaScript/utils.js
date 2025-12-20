@@ -15,7 +15,7 @@ function hideLoading() {
 }
 
 function showToCartNotification(productTitle) {
-    alert(`El producto "${productTitle}" ha sido añadido al carrito.`);
+    alert(`Product "${productTitle}" has been added to the cart.`);
 }
 
 function updateCarstCount() {
@@ -46,7 +46,6 @@ function getCart() {
     return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
-// funcion para guardar un producto en local storage
 function saveCartToLocalStorage(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCarstCount();
