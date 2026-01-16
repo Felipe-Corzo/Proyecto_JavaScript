@@ -39,8 +39,12 @@ updateCarstCount();
 
 async function openModal(id) {
     const modalBody = document.getElementById('modal-body');
+    // 'products' debe ser tu array global con todos los productos de la API
     const product = products.find(p => p.id === id);
+    
     if (!product) return;
+
+    // Resetear valores de cantidad para el nuevo producto
     currentQty = 1;
     currentPrice = product.price;
 
@@ -78,13 +82,17 @@ async function openModal(id) {
             </div>
 
             <button class="btn-add-big" id="main-add-btn" onclick="addToCar(${product.id}, currentQty)">
-                 Add ${currentQty} product to cart 🛒
+                 Add 1 product to cart 🛒
             </button>
         </div>
     `;
 
+    // Mostrar el modal
     document.getElementById('modal-overlay').style.display = 'flex';
 
+    // 🔥 NUEVO: Activar el carrusel con productos de la misma categoría
+    // Le pasamos la categoría del producto abierto y el array completo de productos
+    updateRelatedCarousel(product.category, products);
 }
 
 function closeModal() {
@@ -159,6 +167,9 @@ priceSlider.addEventListener('change', (e) => {
 // LoGICA DE FILTRADO==========================================================================0
 
 function applyFilters() {
+    // Ejemplo dentro de tu buscador o filtros de categoría:
+    currentPage = 1; // <--- REINICIAR SIEMPRE AL FILTRAR
+    
     const maxPrice = parseFloat(priceSlider.value);
     const searchTerm = searchInput.value.toLowerCase().trim();
 
@@ -178,15 +189,24 @@ function applyFilters() {
 // RENDERIZADO EN EL HTML =========================================================================000
 
 function renderProducts(productsList) {
-
+    // 1. Limpiar el contenedor de productos
     productosContainer.innerHTML = '';
 
+    // 2. Manejo de caso sin resultados
     if (productsList.length === 0) {
         productosContainer.innerHTML = `<p class="no-results">No products found matching the filters.</p>`;
+        // Limpiamos también la paginación si no hay productos
+        const paginationContainer = document.getElementById('pagination');
+        if (paginationContainer) paginationContainer.innerHTML = '';
         return;
     }
 
-    productsList.forEach(product => {
+    // 3. LÓGICA DE PAGINACIÓN: Obtener solo el segmento de la página actual
+    // getPaginatedItems debe estar en tu utils.js
+    const itemsToShow = getPaginatedItems(productsList, currentPage, productsPerPage);
+
+    // 4. Renderizar solo los productos de la página actual
+    itemsToShow.forEach(product => {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
         
@@ -209,6 +229,12 @@ function renderProducts(productsList) {
             </div>`;
         
         productosContainer.appendChild(productElement);
+    });
+
+    // 5. LÓGICA DE PAGINACIÓN: Dibujar los botones abajo
+    // renderPaginationButtons debe estar en tu utils.js
+    renderPaginationButtons(productsList.length, () => {
+        renderProducts(productsList);
     });
 }
 
@@ -265,4 +291,35 @@ function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
     saveCartToLocalStorage(cart);
     renderCartItems(); 
+}
+
+
+
+// Variable para controlar el movimiento
+function moveCarousel(direction) {
+    const track = document.getElementById('carousel-track');
+    const scrollAmount = 200;
+    track.scrollLeft += direction * scrollAmount;
+}
+
+// Función para mostrar productos similares
+function updateRelatedCarousel(category, allProducts) {
+    const carouselSection = document.getElementById('related-carousel');
+    const track = document.getElementById('carousel-track');
+    
+    // Filtrar productos de la misma categoría (excluyendo el actual si lo deseas)
+    const related = allProducts.filter(p => p.category === category).slice(0, 8);
+
+    if (related.length > 0) {
+        carouselSection.style.display = 'block';
+        track.innerHTML = related.map(product => `
+            <div class="carousel-item">
+                <img src="${product.image}" alt="${product.title}">
+                <p style="font-size: 0.8rem; height: 30px; overflow: hidden;">${product.title}</p>
+                <p style="color: var(--cart-accent); font-weight: bold;">$${product.price}</p>
+                <button class="details-button" style="padding: 5px; font-size: 0.7rem;" 
+                        onclick="openModal(${product.id})">Ver</button>
+            </div>
+        `).join('');
+    }
 }
