@@ -168,7 +168,7 @@ priceSlider.addEventListener('change', (e) => {
 
 function applyFilters() {
     // Ejemplo dentro de tu buscador o filtros de categoría:
-    currentPage = 1; // <--- REINICIAR SIEMPRE AL FILTRAR
+    paginaGlobal = 1; // <--- REINICIAR SIEMPRE AL FILTRAR
     
     const maxPrice = parseFloat(priceSlider.value);
     const searchTerm = searchInput.value.toLowerCase().trim();
@@ -189,23 +189,19 @@ function applyFilters() {
 // RENDERIZADO EN EL HTML =========================================================================000
 
 function renderProducts(productsList) {
-    // 1. Limpiar el contenedor de productos
+    
     productosContainer.innerHTML = '';
 
-    // 2. Manejo de caso sin resultados
     if (productsList.length === 0) {
-        productosContainer.innerHTML = `<p class="no-results">No products found matching the filters.</p>`;
-        // Limpiamos también la paginación si no hay productos
-        const paginationContainer = document.getElementById('pagination');
-        if (paginationContainer) paginationContainer.innerHTML = '';
+        productosContainer.innerHTML = `<p class="no-results">No se encontraron productos</p>`;
+        const paginacionContainer = document.getElementById('pagination');
+        if (paginacionContainer) paginacionContainer.innerHTML = '';
         return;
     }
 
-    // 3. LÓGICA DE PAGINACIÓN: Obtener solo el segmento de la página actual
-    // getPaginatedItems debe estar en tu utils.js
-    const itemsToShow = getPaginatedItems(productsList, currentPage, productsPerPage);
+    const itemsToShow = getPaginatedItems(productsList, paginaGlobal, productosporPagina);
 
-    // 4. Renderizar solo los productos de la página actual
+   
     itemsToShow.forEach(product => {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
@@ -231,9 +227,8 @@ function renderProducts(productsList) {
         productosContainer.appendChild(productElement);
     });
 
-    // 5. LÓGICA DE PAGINACIÓN: Dibujar los botones abajo
-    // renderPaginationButtons debe estar en tu utils.js
-    renderPaginationButtons(productsList.length, () => {
+ 
+    renderPaginacionItems(productsList.length, () => {
         renderProducts(productsList);
     });
 }

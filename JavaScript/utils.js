@@ -53,41 +53,36 @@ function saveCartToLocalStorage(cart) {
 
 // ================================================================================================================NUEVO (PAGINACION)
 
-// Variable global para controlar la página actual
-let currentPage = 1;
-const productsPerPage = 10;
+let paginaGlobal = 1;
+const productosporPagina = 6;
 
-/**
- * Calcula y devuelve solo los productos que deben verse en la página actual
- */
-function getPaginatedItems(items, page, perPage) {
-    const start = (page - 1) * perPage;
-    const end = start + perPage;
-    return items.slice(start, end);
+
+function getPaginatedItems(items, page, porPagina) {
+    const inicio = (page - 1) * porPagina;
+    const fin = inicio + porPagina;
+    return items.slice(inicio, fin);
 }
 
-/**
- * Genera los botones de paginación en el DOM
- */
-function renderPaginationButtons(totalItems, callback) {
-    const paginationContainer = document.getElementById('pagination');
-    if (!paginationContainer) return;
 
-    paginationContainer.innerHTML = '';
-    const pageCount = Math.ceil(totalItems / productsPerPage);
+function renderPaginacionItems(totalItems, callback) {
+    const paginacionContainer = document.getElementById('pagination');
+    if (!paginacionContainer) return;
+    
+
+    paginacionContainer.innerHTML = '';
+    const pageCount = Math.ceil(totalItems / productosporPagina);
 
     for (let i = 1; i <= pageCount; i++) {
         const btn = document.createElement('button');
         btn.innerText = i;
         btn.classList.add('btn-page');
-        if (i === currentPage) btn.classList.add('active');
+        if (i === paginaGlobal) btn.classList.add('active');
 
         btn.onclick = () => {
-            currentPage = i;
-            callback(); // Aquí ejecutaremos el renderizado de nuevo
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            paginaGlobal = i;
+            callback(); 
         };
-        paginationContainer.appendChild(btn);
+        paginacionContainer.appendChild(btn);
     }
 }
 
